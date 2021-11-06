@@ -18,6 +18,7 @@
 		E338D6FA2714C2010050E21B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E338D6F92714C2010050E21B /* CollectionViewCell.swift */; };
 		E387A1762737219D009414AD /* Network manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E387A1752737219D009414AD /* Network manager.swift */; };
 		E388FA1E2715C4D500425311 /* ImageElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E388FA1D2715C4D500425311 /* ImageElement.swift */; };
+		E3A32EA027372C4F006D0D16 /* Collection View .swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A32E9F27372C4F006D0D16 /* Collection View .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E338D6F92714C2010050E21B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		E387A1752737219D009414AD /* Network manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network manager.swift"; sourceTree = "<group>"; };
 		E388FA1D2715C4D500425311 /* ImageElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageElement.swift; sourceTree = "<group>"; };
+		E3A32E9F27372C4F006D0D16 /* Collection View .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection View .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				E338D6E92714C07F0050E21B /* ViewController.swift */,
+				E3A32E9F27372C4F006D0D16 /* Collection View .swift */,
 			);
 			path = MainScren;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A32EA027372C4F006D0D16 /* Collection View .swift in Sources */,
 				E388FA1E2715C4D500425311 /* ImageElement.swift in Sources */,
 				E338D6EA2714C07F0050E21B /* ViewController.swift in Sources */,
 				E338D6E62714C07F0050E21B /* AppDelegate.swift in Sources */,
