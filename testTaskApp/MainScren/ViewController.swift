@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     
     var networkManager = NetworkManager()
+    var collectionCustumized = CollectionCustumized()
     
     override func viewDidLoad() {
         super.viewDidLoad()
