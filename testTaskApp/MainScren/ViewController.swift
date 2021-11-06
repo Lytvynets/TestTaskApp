@@ -13,11 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collection: UICollectionView!
     
-    let decoder = JSONDecoder()
-    let session = URLSession.shared
-    let sessionConfiguration = URLSessionConfiguration.default
-    
-    var imageArray = [ImageElement]()
+    var networkManager = NetworkManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,30 +21,8 @@ class ViewController: UIViewController {
         collection.delegate = self
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        networking()
+        networkManager.networking(vc: self, collectionView: collection)
     }
-    
-    
-    func networking(){
-        guard let url = URL(string: "https://picsum.photos/v2/list?page=2&limit=15") else { return }
-        session.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let strongSelf = self else { return }
-            if error == nil, let parsData = data {
-                guard let postss = try? strongSelf.decoder.decode([ImageElement].self, from: parsData) else { return }
-                strongSelf.imageArray = postss
-                
-                DispatchQueue.main.async {
-                    strongSelf.collection.reloadData()
-                    self?.activityIndicator.isHidden = true
-                    self?.activityIndicator.stopAnimating()
-                }
-            }
-            else{
-                print("Error: \(String(describing: error?.localizedDescription))")
-            }
-        }.resume()
-    }
-    
 }
 
 
@@ -56,7 +30,7 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
+        return networkManager.imageArray.count
     }
     
     
@@ -77,7 +51,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.layer.cornerRadius = 5
         cell.postedImage.layer.cornerRadius = 5
         
-        let img = imageArray[indexPath.item].downloadURL
+        let img = networkManager.imageArray[indexPath.item].downloadURL
         guard let url = URL(string: img) else { return cell}
         cell.postedImage.sd_setImage(with: url, completed: nil)
         return cell
@@ -85,7 +59,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let img = imageArray[indexPath.item]
+        let img = networkManager.imageArray[indexPath.item]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let imageDetails = storyboard.instantiateViewController(identifier: "ImageDetails") as? ImageDetails else { return }
         imageDetails.author = img.author
