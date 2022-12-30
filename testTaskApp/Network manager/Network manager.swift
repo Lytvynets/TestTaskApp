@@ -19,7 +19,7 @@ class NetworkManager {
     var imageArray = [ImageElement]()
     
     func networking(vc: ViewController, collectionView: UICollectionView){
-        guard let url = URL(string: "https://picsum.photos/v2/list?page=2&limit=15") else { return }
+        guard let url = URL(string: "https://picsum.photos/v2/list?page=2&limit=55") else { return }
         session.dataTask(with: url) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
             if error == nil, let parsData = data {
